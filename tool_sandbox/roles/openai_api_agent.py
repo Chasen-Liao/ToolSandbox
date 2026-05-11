@@ -169,3 +169,14 @@ class GPT_3_5_0125_Agent(OpenAIAPIAgent):
 
 class GPT_4_o_2024_05_13_Agent(OpenAIAPIAgent):
     model_name = "gpt-4o-2024-05-13"
+
+
+class RkllmAgent(OpenAIAPIAgent):
+    """Agent for rkllm models via OpenAI-compatible API"""
+
+    def __init__(self) -> None:
+        import os
+
+        base_url = os.environ.get("RKLLM_BASE_URL", "http://172.31.18.39:8080/v1")
+        api_key = os.environ.get("RKLLM_API_KEY", "EMPTY")
+        self.openai_client: OpenAI = OpenAI(base_url=base_url, api_key=api_key)
