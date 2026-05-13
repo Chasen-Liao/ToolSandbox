@@ -1,30 +1,17 @@
 """
-ToolSandbox Evaluation Script
-====================================
-Model-agnostic evaluation against ToolSandbox-style scenarios.
-Supports RKLLM, GLM, or any OpenAI-compatible endpoint via environment variables.
+GLM 5.1 ToolSandbox Evaluation Script
+======================================
+Standalone evaluation of GLM 5.1 (VolcEngine Ark) against
+ToolSandbox-style scenarios. Tests tool calling accuracy across multiple
+categories: single tool, multi-tool, multi-turn, state-dependent, and
+distraction tool scenarios.
 
-Environment variables (all optional with defaults):
-  MODEL_BASE_URL   API base URL  (default: http://172.31.18.39:8080/v1)
-  MODEL_API_KEY    API key        (default: EMPTY)
-  MODEL_NAME       Model name     (default: rkllm-model)
-  REPORT_NAME      Output .md     (default: toolsandbox_report.md)
-
-Run RKLLM:
-  python rkllm_toolsandbox_eval.py
-
-Run GLM 5.1 (VolcEngine):
-  set MODEL_BASE_URL=https://ark.cn-beijing.volces.com/api/coding/v3
-  set MODEL_API_KEY=ark-5fd96c60-2295-4d2d-9f31-1c73e841022b-eef05
-  set MODEL_NAME=glm-5.1
-  set REPORT_NAME=glm51_toolsandbox_report.md
-  python rkllm_toolsandbox_eval.py
+No dependency on the ToolSandbox framework itself — uses only openai + requests.
 """
 
 import copy
 import json
 import math
-import os
 import sys
 import time
 import traceback
@@ -34,21 +21,15 @@ from typing import Any, Optional
 import requests
 from openai import OpenAI
 
-# ── Configuration (from env, with defaults) ───────────────────────────────
-MODEL_BASE_URL = os.environ.get(
-    "MODEL_BASE_URL", "http://172.31.18.39:8080/v1"
-)
-MODEL_API_KEY = os.environ.get("MODEL_API_KEY", "EMPTY")
-MODEL_NAME = os.environ.get("MODEL_NAME", "rkllm-model")
+# ── Configuration (hardcoded for GLM 5.1 on VolcEngine Ark) ────────────────
+GLM_BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3"
+GLM_API_KEY = "ark-5fd96c60-2295-4d2d-9f31-1c73e841022b-eef05"
+GLM_MODEL = "glm-5.1"
 REQUEST_TIMEOUT = 60
 MAX_RETRIES = 2
 MAX_TURNS = 5
-REPORT_NAME = os.environ.get("REPORT_NAME", "toolsandbox_report.md")
 
-# Derive a short model label from MODEL_NAME for display
-MODEL_LABEL = MODEL_NAME.split("-")[0].split("_")[0].upper()
-
-CLIENT = OpenAI(base_url=MODEL_BASE_URL, api_key=MODEL_API_KEY)
+CLIENT = OpenAI(base_url=GLM_BASE_URL, api_key=GLM_API_KEY)
 
 
 # ── Test result data structures ────────────────────────────────────────────
@@ -697,9 +678,9 @@ def evaluate_tool_calls(found_calls: list[dict[str, Any]], expected_calls: list[
 
 
 # ── API call helper ────────────────────────────────────────────────────────
-def call_model(messages: list, tools: Optional[list] = None, temperature: float = 0.0) -> dict:
+def call_glm(messages: list, tools: Optional[list] = None, temperature: float = 0.0) -> dict:
     kwargs = {
-        "model": MODEL_NAME,
+        "model": GLM_MODEL,
         "messages": messages,
         "temperature": temperature,
         "max_tokens": 512,
@@ -731,7 +712,7 @@ def run_conversation_turns(system_prompt: str, user_message: str, tools: list, e
 
     try:
         for _ in range(max_turns):
-            msg = call_model(messages, tools=tools)
+            msg = call_glm(messages, tools=tools)
             all_responses.append(msg)
 
             if msg.get("tool_calls"):
@@ -874,20 +855,20 @@ def define_test_cases() -> list[dict]:
 # ── Main evaluation ────────────────────────────────────────────────────────
 def check_api_connectivity(report: EvalReport) -> bool:
     try:
-        CLIENT.chat.completions.create(
-            model=MODEL_NAME,
+        test_response = CLIENT.chat.completions.create(
+            model=GLM_MODEL,
             messages=[{"role": "user", "content": "test"}],
             max_tokens=1,
             timeout=30,
         )
         report.api_connectivity = True
-        report.model_info = f"Chat API responding normally. Model: {MODEL_NAME}"
+        report.model_info = f"Chat API responding normally. Model: {GLM_MODEL}"
         return True
     except Exception:
         pass
 
     try:
-        model_url = MODEL_BASE_URL[:-3] + "/models" if MODEL_BASE_URL.endswith("/v1") else MODEL_BASE_URL.rstrip("/") + "/models"
+        model_url = GLM_BASE_URL[:-3] + "/models" if GLM_BASE_URL.endswith("/v1") else GLM_BASE_URL.rstrip("/") + "/models"
         response = requests.get(model_url, timeout=10)
         if response.status_code == 200:
             report.model_info = json.dumps(response.json(), indent=2)
@@ -901,16 +882,16 @@ def check_api_connectivity(report: EvalReport) -> bool:
 
 
 def run_evaluation() -> EvalReport:
-    report = EvalReport(model=MODEL_NAME, base_url=MODEL_BASE_URL, timestamp=time.strftime("%Y-%m-%d %H:%M:%S"))
+    report = EvalReport(model=GLM_MODEL, base_url=GLM_BASE_URL, timestamp=time.strftime("%Y-%m-%d %H:%M:%S"))
 
     print("=" * 70)
-    print(f"  ToolSandbox Evaluation  [{MODEL_LABEL}]")
+    print("  ToolSandbox Evaluation  [GLM]")
     print("=" * 70)
     print()
 
     print("[1/4] Checking API connectivity...")
     if not check_api_connectivity(report):
-        print("  FAIL: Cannot connect to API at", MODEL_BASE_URL)
+        print("  FAIL: Cannot connect to GLM API at", GLM_BASE_URL)
         return report
     print("  PASS: API is reachable")
     print(f"  Model info: {report.model_info[:100]}")
@@ -919,7 +900,7 @@ def run_evaluation() -> EvalReport:
     print("[2/4] Testing basic chat completion...")
     try:
         start = time.time()
-        msg = call_model([{"role": "user", "content": "Hello, please respond with 'OK'."}])
+        msg = call_glm([{"role": "user", "content": "Hello, please respond with 'OK'."}])
         latency = (time.time() - start) * 1000
         print(f"  PASS: Got response in {latency:.0f}ms")
         print(f"  Response: {(msg.get('content') or '')[:100]}")
@@ -1065,8 +1046,8 @@ def generate_markdown_report(report: EvalReport) -> str:
     lines.append("| OS | Windows |")
     lines.append(f"| Python | {sys.version.split()[0]} |")
     lines.append("| API Protocol | OpenAI-compatible (v1/chat/completions) |")
-    lines.append(f"| Model | {MODEL_NAME} |")
-    lines.append(f"| Base URL | {MODEL_BASE_URL} |")
+    lines.append(f"| Model | {GLM_MODEL} |")
+    lines.append(f"| Base URL | {GLM_BASE_URL} |")
     lines.append("| Temperature | 0.0 |")
     lines.append("| Max Tokens | 512 |")
     lines.append(f"| Max Retries | {MAX_RETRIES} |")
@@ -1074,23 +1055,18 @@ def generate_markdown_report(report: EvalReport) -> str:
     lines.append("")
     lines.append("---")
     lines.append("")
-    lines.append("*Report generated by ToolSandbox evaluation script.*")
+    lines.append("*Report generated by GLM 5.1 ToolSandbox evaluation script.*")
     return "\n".join(lines)
 
 
 if __name__ == "__main__":
-    print(f"[Config] BASE_URL={MODEL_BASE_URL}")
-    print(f"[Config] MODEL={MODEL_NAME}")
-    print(f"[Config] REPORT={REPORT_NAME}")
-    print()
-
     report = run_evaluation()
     markdown = generate_markdown_report(report)
-
-    with open(REPORT_NAME, "w", encoding="utf-8") as file:
+    report_path = "glm51_toolsandbox_report.md"
+    with open(report_path, "w", encoding="utf-8") as file:
         file.write(markdown)
 
-    print(f"Report saved to: {REPORT_NAME}")
+    print(f"Report saved to: {report_path}")
     print()
     print("=" * 70)
     print("  Evaluation Complete")
