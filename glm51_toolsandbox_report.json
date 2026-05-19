@@ -1,0 +1,1215 @@
+{
+  "model": "glm-5.1",
+  "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+  "timestamp": "2026-05-18 16:40:00",
+  "results": [
+    {
+      "name": "cellular_off",
+      "category": "Single Tool Call - Settings",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 14105.914115905762,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: set_cellular_service_status | Response: Cellular service has been turned off successfully.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "I'll turn off cellular service for you right away.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_lke4f3dq5br9wgokohvoy6ne",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_cellular_service_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to turn off cellular service. I'll use the set_cellular_service_status function with on=false."
+        },
+        {
+          "content": "Cellular service has been turned off successfully.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Cellular service has been turned off successfully.",
+      "tool_calls_found": [
+        {
+          "name": "set_cellular_service_status",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_cellular",
+      "category": "Single Tool Call - Settings",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 6751.314640045166,
+      "tool_call_correct": false,
+      "tool_args_correct": false,
+      "response_relevant": false,
+      "detail": "Missing expected tool call: get_cellular_service_status | No tool calls made",
+      "error": "Traceback (most recent call last):\n  File \"D:\\Og\\papers\\paper\\agent benchmark\\ToolSandbox\\glm51_toolsandbox_eval.py\", line 724, in run_conversation_turns\n    func_args = json.loads(func_args)\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 363, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n",
+      "full_response": [
+        {
+          "content": "Let me check that for you!",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_6danq9p4sy5p051gxa6j0gvi",
+              "function": {
+                "arguments": "",
+                "name": "get_cellular_service_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to know about their cellular service status. I should use the get_cellular_service_status function to check this."
+        }
+      ],
+      "final_response": "",
+      "tool_calls_found": []
+    },
+    {
+      "name": "wifi_off",
+      "category": "Single Tool Call - Settings",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 7902.302503585815,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: set_wifi_status | Response: Wi-Fi has been turned off successfully.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_symie8uo1ab168y93s9pmbgb",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_wifi_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to turn off wifi. I'll call the set_wifi_status function with on=false."
+        },
+        {
+          "content": "Wi-Fi has been turned off successfully.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Wi-Fi has been turned off successfully.",
+      "tool_calls_found": [
+        {
+          "name": "set_wifi_status",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_wifi",
+      "category": "Single Tool Call - Settings",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 2270.578145980835,
+      "tool_call_correct": false,
+      "tool_args_correct": false,
+      "response_relevant": false,
+      "detail": "Missing expected tool call: get_wifi_status | No tool calls made",
+      "error": "Traceback (most recent call last):\n  File \"D:\\Og\\papers\\paper\\agent benchmark\\ToolSandbox\\glm51_toolsandbox_eval.py\", line 724, in run_conversation_turns\n    func_args = json.loads(func_args)\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 363, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n",
+      "full_response": [
+        {
+          "content": "Let me check your wifi status for you.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_nzn58pnk6lntcanb6n1u4pyz",
+              "function": {
+                "arguments": "",
+                "name": "get_wifi_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to know if their wifi is on. I should use the get_wifi_status tool to check."
+        }
+      ],
+      "final_response": "",
+      "tool_calls_found": []
+    },
+    {
+      "name": "search_phone_number_with_name",
+      "category": "Single Tool Call - Contacts",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 12213.908433914185,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_contacts | Response: Homer S's phone number is **+10000000000**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_m0ncgr8cxqst7a9me82o6bl3",
+              "function": {
+                "arguments": "{\"name\": \"Homer S\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for Homer S's phone number. I should search for this contact."
+        },
+        {
+          "content": "Homer S's phone number is **+10000000000**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The search returned a result for Homer S with the phone number +10000000000 and the relationship is \"boss\"."
+        }
+      ],
+      "final_response": "Homer S's phone number is **+10000000000**.",
+      "tool_calls_found": [
+        {
+          "name": "search_contacts",
+          "args": {
+            "name": "Homer S"
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_name_with_relationship",
+      "category": "Single Tool Call - Contacts",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 9216.097593307495,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_contacts | Response: Your boss's name is **Homer S**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "Let me search for your boss in your contacts.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_hfy88anfspx9j5992c0ejc0w",
+              "function": {
+                "arguments": "{\"relationship\": \"boss\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking about the name of their boss. I should search for a contact with the relationship \"boss\" to find this information."
+        },
+        {
+          "content": "Your boss's name is **Homer S**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Your boss's name is **Homer S**.",
+      "tool_calls_found": [
+        {
+          "name": "search_contacts",
+          "args": {
+            "relationship": "boss"
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_relationship_with_phone_number",
+      "category": "Single Tool Call - Contacts",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 4514.702558517456,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_contacts | Response: The phone number +10000000000 belongs to **Homer S**, and your relationship with them is **boss**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_tkrqs8k6xam9mx69cquun6bb",
+              "function": {
+                "arguments": "{\"phone_number\": \"+10000000000\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to know their relationship with the contact who has phone number +10000000000. Let me search for this contact."
+        },
+        {
+          "content": "The phone number +10000000000 belongs to **Homer S**, and your relationship with them is **boss**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "The phone number +10000000000 belongs to **Homer S**, and your relationship with them is **boss**.",
+      "tool_calls_found": [
+        {
+          "name": "search_contacts",
+          "args": {
+            "phone_number": "+10000000000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "add_contact_with_name_and_phone_number",
+      "category": "Single Tool Call - Contacts",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 20377.702474594116,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: add_contact | Response: Stephen Sondheim has been added to your contacts with the phone number +19876543210.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_pe71jwoijmwxmmte0ttq3zfl",
+              "function": {
+                "arguments": "{\"name\": \"Stephen Sondheim\", \"phone_number\": \"+19876543210\"}",
+                "name": "add_contact"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": ""
+        },
+        {
+          "content": "Stephen Sondheim has been added to your contacts with the phone number +19876543210.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The contact has been successfully added. Let me inform the user."
+        }
+      ],
+      "final_response": "Stephen Sondheim has been added to your contacts with the phone number +19876543210.",
+      "tool_calls_found": [
+        {
+          "name": "add_contact",
+          "args": {
+            "name": "Stephen Sondheim",
+            "phone_number": "+19876543210"
+          }
+        }
+      ]
+    },
+    {
+      "name": "send_message_with_phone_number_and_content",
+      "category": "Single Tool Call - Messaging",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 5775.965452194214,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: send_message_with_phone_number | Response: Message sent successfully to +12453344098! The message \"How's the new album coming along\" has been delivered.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_hl9hd5rx5b5k60ya1pij5rd2",
+              "function": {
+                "arguments": "{\"phone_number\": \"+12453344098\", \"content\": \"How's the new album coming along\"}",
+                "name": "send_message_with_phone_number"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants me to send a message to a specific phone number with a specific content. I have all the required parameters."
+        },
+        {
+          "content": "Message sent successfully to +12453344098! The message \"How's the new album coming along\" has been delivered.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Message sent successfully to +12453344098! The message \"How's the new album coming along\" has been delivered.",
+      "tool_calls_found": [
+        {
+          "name": "send_message_with_phone_number",
+          "args": {
+            "phone_number": "+12453344098",
+            "content": "How's the new album coming along"
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_sender_phone_number_with_content",
+      "category": "Single Tool Call - Messaging",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 4519.156455993652,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_messages, search_messages | Response: The phone number **+18307976530** asked you if you want some GPUs.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_x9khln1selysnez5mjsqm0mf",
+              "function": {
+                "arguments": "{\"content\": \"GPUs\"}",
+                "name": "search_messages"
+              },
+              "type": "function"
+            },
+            {
+              "id": "call_wkwore8i5czppm8jtc2bc3oi",
+              "function": {
+                "arguments": "{\"content\": \"GPU\"}",
+                "name": "search_messages"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to find a message where someone asked them about GPUs. Let me search for messages containing \"GPU\" or \"GPUs\"."
+        },
+        {
+          "content": "The phone number **+18307976530** asked you if you want some GPUs.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "The phone number **+18307976530** asked you if you want some GPUs.",
+      "tool_calls_found": [
+        {
+          "name": "search_messages",
+          "args": {
+            "content": "GPUs"
+          }
+        },
+        {
+          "name": "search_messages",
+          "args": {
+            "content": "GPU"
+          }
+        }
+      ]
+    },
+    {
+      "name": "find_temperature",
+      "category": "Single Tool Call - Search",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 3911.459445953369,
+      "tool_call_correct": false,
+      "tool_args_correct": false,
+      "response_relevant": true,
+      "detail": "Missing expected tool call: search_weather_around_lat_lon | No tool calls made | Response: I'd be happy to check the temperature for you! However, I don't have access to your current location. Could you please share your latitude and longitude, or tell me your city so I can look up the weat",
+      "error": "",
+      "full_response": [
+        {
+          "content": "I'd be happy to check the temperature for you! However, I don't have access to your current location. Could you please share your latitude and longitude, or tell me your city so I can look up the weather for you?",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The user is asking about the temperature at their current location, but they haven't provided their location (latitude and longitude). I need to ask them for this information before I can make the weather search call."
+        }
+      ],
+      "final_response": "I'd be happy to check the temperature for you! However, I don't have access to your current location. Could you please share your latitude and longitude, or tell me your city so I can look up the weather for you?",
+      "tool_calls_found": []
+    },
+    {
+      "name": "find_stock_symbol",
+      "category": "Single Tool Call - Search",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 7929.435968399048,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_stock | Response: The stock symbol for Apple Inc. is **AAPL**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_pwj5x9ff83uqcf60b3s5axf5",
+              "function": {
+                "arguments": "{\"query\": \"Apple\"}",
+                "name": "search_stock"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to know the stock symbol for Apple. Let me search for it."
+        },
+        {
+          "content": "The stock symbol for Apple Inc. is **AAPL**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "The stock symbol for Apple Inc. is **AAPL**.",
+      "tool_calls_found": [
+        {
+          "name": "search_stock",
+          "args": {
+            "query": "Apple"
+          }
+        }
+      ]
+    },
+    {
+      "name": "convert_currency",
+      "category": "Single Tool Call - Search",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 15728.8658618927,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: convert_currency | Response: 2,048 USD is equivalent to **14,800.00 CNY** based on the current exchange rate.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_d4nc0xc5ybhq16zvd0pt6vaq",
+              "function": {
+                "arguments": "{\"amount\": 2048, \"from_currency_code\": \"USD\", \"to_currency_code\": \"CNY\"}",
+                "name": "convert_currency"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to convert 2048 USD to CNY. I'll use the convert_currency function."
+        },
+        {
+          "content": "2,048 USD is equivalent to **14,800.00 CNY** based on the current exchange rate.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The conversion result is 14,800.0 CNY for 2,048 USD."
+        }
+      ],
+      "final_response": "2,048 USD is equivalent to **14,800.00 CNY** based on the current exchange rate.",
+      "tool_calls_found": [
+        {
+          "name": "convert_currency",
+          "args": {
+            "amount": 2048,
+            "from_currency_code": "USD",
+            "to_currency_code": "CNY"
+          }
+        }
+      ]
+    },
+    {
+      "name": "convert_currency_canonicalize",
+      "category": "Canonicalization",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 6293.885231018066,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: convert_currency | Response: $2,048 USD is equivalent to **14,800.00 CNY**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_2udorangnrn6tx1n0jk3dk40",
+              "function": {
+                "arguments": "{\"amount\": 2048, \"from_currency_code\": \"USD\", \"to_currency_code\": \"CNY\"}",
+                "name": "convert_currency"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to convert $2.048k (which is $2,048) from USD to CNY."
+        },
+        {
+          "content": "$2,048 USD is equivalent to **14,800.00 CNY**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "$2.048k USD = $2,048 USD, which converts to 14,800.0 CNY."
+        }
+      ],
+      "final_response": "$2,048 USD is equivalent to **14,800.00 CNY**.",
+      "tool_calls_found": [
+        {
+          "name": "convert_currency",
+          "args": {
+            "amount": 2048,
+            "from_currency_code": "USD",
+            "to_currency_code": "CNY"
+          }
+        }
+      ]
+    },
+    {
+      "name": "find_phone_number_with_location_name",
+      "category": "Canonicalization",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 7875.892162322998,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_location_around_lat_lon | Response: The phone number for **Apple Park** is **+1 (408) 996-1010**. It's located at 1 Apple Park Way, Cupertino, CA 95014.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_5xzynr5x6bjjpi9f7bodgs0b",
+              "function": {
+                "arguments": "{\"location\": \"Apple Park\"}",
+                "name": "search_location_around_lat_lon"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for the phone number of Apple Park. Let me search for this location."
+        },
+        {
+          "content": "The phone number for **Apple Park** is **+1 (408) 996-1010**. It's located at 1 Apple Park Way, Cupertino, CA 95014.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The search returned the phone number for Apple Park."
+        }
+      ],
+      "final_response": "The phone number for **Apple Park** is **+1 (408) 996-1010**. It's located at 1 Apple Park Way, Cupertino, CA 95014.",
+      "tool_calls_found": [
+        {
+          "name": "search_location_around_lat_lon",
+          "args": {
+            "location": "Apple Park"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cellular_off_3_distraction",
+      "category": "3 Distraction Tools",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 3602.1907329559326,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: set_cellular_service_status | Response: Cellular service has been turned off.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_owwavpe494golcg2k49yf1g8",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_cellular_service_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to turn off cellular service. I'll use the set_cellular_service_status function with on=false."
+        },
+        {
+          "content": "Cellular service has been turned off.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Cellular service has been turned off.",
+      "tool_calls_found": [
+        {
+          "name": "set_cellular_service_status",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_contacts_3_distraction",
+      "category": "3 Distraction Tools",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 7280.661821365356,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_contacts | Response: Homer S's phone number is **+10000000000**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_g72hubdc0xem1qflfdwpx0rb",
+              "function": {
+                "arguments": "{\"name\": \"Homer S\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for Homer S's phone number. I should search for this contact."
+        },
+        {
+          "content": "Homer S's phone number is **+10000000000**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The search returned a result for Homer S with the phone number +10000000000."
+        }
+      ],
+      "final_response": "Homer S's phone number is **+10000000000**.",
+      "tool_calls_found": [
+        {
+          "name": "search_contacts",
+          "args": {
+            "name": "Homer S"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wifi_off_10_distraction",
+      "category": "10 Distraction Tools",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 7664.443254470825,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: set_wifi_status | Response: Wi-Fi has been turned off successfully.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_yiy8m9ainp55ywueg8p01knv",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_wifi_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to turn off wifi. I'll use the set_wifi_status function with on=false."
+        },
+        {
+          "content": "Wi-Fi has been turned off successfully.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Wi-Fi has been turned off successfully.",
+      "tool_calls_found": [
+        {
+          "name": "set_wifi_status",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "send_message_10_distraction",
+      "category": "10 Distraction Tools",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 14558.328628540039,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: send_message_with_phone_number | Response: Message sent successfully to +12453344098! 📱",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_sb34u60vddsv5tmzjv18lmqe",
+              "function": {
+                "arguments": "{\"phone_number\": \"+12453344098\", \"content\": \"How's the new album coming along\"}",
+                "name": "send_message_with_phone_number"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": ""
+        },
+        {
+          "content": "Message sent successfully to +12453344098! 📱",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Message sent successfully to +12453344098! 📱",
+      "tool_calls_found": [
+        {
+          "name": "send_message_with_phone_number",
+          "args": {
+            "phone_number": "+12453344098",
+            "content": "How's the new album coming along"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cellular_off_all_tools",
+      "category": "All Tools Available",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 10818.701982498169,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: set_cellular_service_status | Response: Cellular service has been turned off.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_22atqoqsfhthdu337mjvnj9c",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_cellular_service_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": ""
+        },
+        {
+          "content": "Cellular service has been turned off.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Cellular service has been turned off.",
+      "tool_calls_found": [
+        {
+          "name": "set_cellular_service_status",
+          "args": {
+            "on": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "search_contacts_all_tools",
+      "category": "All Tools Available",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 13218.179702758789,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "All expected tool calls matched in order | Tools called: search_contacts | Response: Homer S's phone number is **+10000000000**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_zqf46hze25rd7l5xcl5zfkn7",
+              "function": {
+                "arguments": "{\"name\": \"Homer S\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to find Homer S's phone number. I should search for this contact."
+        },
+        {
+          "content": "Homer S's phone number is **+10000000000**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": ""
+        }
+      ],
+      "final_response": "Homer S's phone number is **+10000000000**.",
+      "tool_calls_found": [
+        {
+          "name": "search_contacts",
+          "args": {
+            "name": "Homer S"
+          }
+        }
+      ]
+    },
+    {
+      "name": "send_message_with_contact_cellular_off",
+      "category": "Multi-Tool / State Dependency",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 38972.50843048096,
+      "tool_call_correct": false,
+      "tool_args_correct": false,
+      "response_relevant": true,
+      "detail": "Missing expected tool call: send_message_with_phone_number | Tools called: set_cellular_service_status, search_contacts | Response: Cellular service has been turned off successfully. I also found Homer S's contact (phone: +10000000000).\n\nHowever, since cellular service is now disabled, I won't be able to send the message. Would yo",
+      "error": "",
+      "full_response": [
+        {
+          "content": "I'll start by turning off cellular service and searching for Homer S's contact at the same time.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_gz1guko4thu50liggheyxay7",
+              "function": {
+                "arguments": "{\"on\": false}",
+                "name": "set_cellular_service_status"
+              },
+              "type": "function"
+            },
+            {
+              "id": "call_9cbjm3rxmkf2ocpan03kuvzx",
+              "function": {
+                "arguments": "{\"name\": \"Homer S\"}",
+                "name": "search_contacts"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants me to do two things:\n1. Turn off cellular service\n2. Send a message to Homer S saying \"Meeting at 3pm\"\n\nHowever, I need to think about the order here. The user said \"But first, turn off cellular service.\" This means they want me to turn off cellular service first, and then send the message. But if I turn off cellular service first, I won't be able to send the message since cellular service would be off.\n\nLet me also consider that I need to find Homer S's phone number first. Let me search for the contact.\n\nActually, I should follow the user's instructions as stated. They said to turn off cellular service first. But logically, if I turn off cellular service, I can't send a message. Let me proceed with the user's request but I should warn them about this.\n\nWait, let me re-read: \"Send a message to Homer S saying: Meeting at 3pm. But first, turn off cellular service.\"\n\nThe user explicitly wants to turn off cellular service first. I should do that, but I should also warn them that sending a message won't be possible without cellular service. \n\nActually, let me first search for Homer S's contact info since I'll need the phone number. I can do the search and turn off cellular service at the same time since they're independent... but wait, the user said \"first turn off cellular service.\" So the order matters to them.\n\nLet me think about this differently. The user's intent might be that they want both things done, but they specified the order. I should follow the order but warn them about the conflict. Let me first turn off cellular service, then explain that I can't send the message without cellular service.\n\nActually, I think the most reasonable approach is to:\n1. Search for Homer S's contact (to get the phone number)\n2. Turn off cellular service\n3. Then explain that I can't send the message without cellular service\n\nBut searching for contacts and turning off cellular service are independent, so I could do them in parallel. However, the user said \"first turn off cellular service\" - this implies a specific order.\n\nLet me just follow the user's instructions step by step. First, turn off cellular service. Then I'll need to search for Homer S and send the message, but I should warn the user that cellular service is off.\n\nHmm, but actually, maybe I should just do what the user asks and warn them. Let me start by turning off cellular service and searching for Homer S in parallel (since searching contacts doesn't require cellular service), then attempt to send the message and warn about the issue.\n\nActually, let me just do both in parallel - turn off cellular service and search for Homer S. Then I'll address the message sending issue."
+        },
+        {
+          "content": "Cellular service has been turned off successfully. I also found Homer S's contact (phone: +10000000000).\n\nHowever, since cellular service is now disabled, I won't be able to send the message. Would you like me to turn cellular service back on so I can send the message \"Meeting at 3pm\" to Homer S?",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "Cellular service is now off. I found Homer S's contact with phone number +10000000000. However, I need to send a message to Homer S, but cellular service is turned off. I should let the user know that cellular service has been turned off, which means I won't be able to send the message since cellular service is required for sending messages.\n\nWait, let me think about this more carefully. The user asked me to turn off cellular service first, and then send a message. But if cellular service is off, I likely can't send a message. I should inform the user about this conflict."
+        }
+      ],
+      "final_response": "Cellular service has been turned off successfully. I also found Homer S's contact (phone: +10000000000).\n\nHowever, since cellular service is now disabled, I won't be able to send the message. Would you like me to turn cellular service back on so I can send the message \"Meeting at 3pm\" to Homer S?",
+      "tool_calls_found": [
+        {
+          "name": "set_cellular_service_status",
+          "args": {
+            "on": false
+          }
+        },
+        {
+          "name": "search_contacts",
+          "args": {
+            "name": "Homer S"
+          }
+        }
+      ]
+    },
+    {
+      "name": "get_location_then_weather",
+      "category": "Multi-Tool / State Dependency",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 6229.121208190918,
+      "tool_call_correct": false,
+      "tool_args_correct": false,
+      "response_relevant": false,
+      "detail": "Missing expected tool call: get_current_location | Tools called: set_location_service_status",
+      "error": "Traceback (most recent call last):\n  File \"D:\\Og\\papers\\paper\\agent benchmark\\ToolSandbox\\glm51_toolsandbox_eval.py\", line 724, in run_conversation_turns\n    func_args = json.loads(func_args)\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Og\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\decoder.py\", line 363, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n",
+      "full_response": [
+        {
+          "content": "I'll help you check the weather at your current location. First, let me get your location.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_k7avf61zxpj6aksnrm9yvcns",
+              "function": {
+                "arguments": "{\"on\": true}",
+                "name": "set_location_service_status"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to know the weather at their current location. I need to first get their current location, but that requires location service to be enabled. Let me first check if location service is enabled by trying to get the current location. If it's not enabled, I'll need to enable it first.\n\nLet me try to get the current location first."
+        },
+        {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_vwe7jtl7046985afyh5tzyl4",
+              "function": {
+                "arguments": "",
+                "name": "get_current_location"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "Location service is enabled. Now let me get the current location."
+        }
+      ],
+      "final_response": "",
+      "tool_calls_found": [
+        {
+          "name": "set_location_service_status",
+          "args": {
+            "on": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "general_question_no_tool",
+      "category": "No Tool Required",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 2297.3005771636963,
+      "tool_call_correct": true,
+      "tool_args_correct": true,
+      "response_relevant": true,
+      "detail": "No tool call expected and none made | No tool calls made | Response: The capital of France is **Paris**.",
+      "error": "",
+      "full_response": [
+        {
+          "content": "The capital of France is **Paris**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "The user is asking a general knowledge question that doesn't require any of the available tools. I can answer this directly."
+        }
+      ],
+      "final_response": "The capital of France is **Paris**.",
+      "tool_calls_found": []
+    }
+  ],
+  "api_connectivity": true,
+  "model_info": "Chat API responding normally. Model: glm-5.1"
+}

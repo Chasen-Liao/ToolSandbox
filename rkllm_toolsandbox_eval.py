@@ -28,7 +28,7 @@ import os
 import sys
 import time
 import traceback
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from typing import Any, Optional
 
 import requests
@@ -64,7 +64,7 @@ class TestCaseResult:
     response_relevant: bool
     detail: str = ""
     error: str = ""
-    full_response: str = ""
+    full_response: list[dict[str, Any]] = field(default_factory=list)
     final_response: str = ""
     tool_calls_found: list[dict[str, Any]] = field(default_factory=list)
 
@@ -748,7 +748,7 @@ def run_conversation_turns(system_prompt: str, user_message: str, tools: list, e
                 final_response = (msg.get("content") or "").strip()
                 break
     except Exception as e:
-        error = f"{type(e).__name__}: {e}"
+        error = traceback.format_exc()
         if not tool_calls_found and not all_responses:
             latency_ms = (time.time() - start_time) * 1000
             return TestCaseResult(
@@ -761,7 +761,7 @@ def run_conversation_turns(system_prompt: str, user_message: str, tools: list, e
                 tool_args_correct=False,
                 response_relevant=False,
                 error=error,
-                full_response="[]",
+                full_response=[],
                 final_response="",
                 tool_calls_found=[],
             )
@@ -797,7 +797,7 @@ def run_conversation_turns(system_prompt: str, user_message: str, tools: list, e
         response_relevant=response_relevant,
         detail=" | ".join(detail_parts),
         error=error,
-        full_response=json.dumps(all_responses, ensure_ascii=False)[:4000],
+        full_response=all_responses,
         final_response=final_response,
         tool_calls_found=tool_calls_found,
     )
@@ -956,7 +956,7 @@ def run_evaluation() -> EvalReport:
                 tool_call_correct=False,
                 tool_args_correct=False,
                 response_relevant=False,
-                error=f"Exception: {traceback.format_exc()[:500]}",
+                error=f"Exception: {traceback.format_exc()}",
             )
             print(f"ERROR: {e}")
         report.results.append(result)
@@ -1086,11 +1086,15 @@ if __name__ == "__main__":
 
     report = run_evaluation()
     markdown = generate_markdown_report(report)
+    json_report_name = os.path.splitext(REPORT_NAME)[0] + ".json"
 
     with open(REPORT_NAME, "w", encoding="utf-8") as file:
         file.write(markdown)
+    with open(json_report_name, "w", encoding="utf-8") as file:
+        json.dump(asdict(report), file, ensure_ascii=False, indent=2)
 
     print(f"Report saved to: {REPORT_NAME}")
+    print(f"JSON saved to: {json_report_name}")
     print()
     print("=" * 70)
     print("  Evaluation Complete")
