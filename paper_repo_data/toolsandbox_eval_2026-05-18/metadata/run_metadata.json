@@ -1,0 +1,16 @@
+[
+  {
+    "model_display": "GLM-5.1",
+    "source_json": "paper_repo_data/toolsandbox_eval_2026-05-18/raw/glm51_toolsandbox_report.json",
+    "timestamp": "2026-05-18 16:40:00",
+    "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+    "total_cases": 24
+  },
+  {
+    "model_display": "RKLLM",
+    "source_json": "paper_repo_data/toolsandbox_eval_2026-05-18/raw/rkllm_toolsandbox_report.json",
+    "timestamp": "2026-05-18 16:44:36",
+    "base_url": "http://172.31.18.39:8080/v1",
+    "total_cases": 24
+  }
+]
